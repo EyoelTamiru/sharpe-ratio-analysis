@@ -1,0 +1,17 @@
+-- Create table for raw data
+CREATE TABLE IF NOT EXISTS raw_stock_prices (
+    Date TEXT,
+    AMZN REAL,
+    META REAL,
+    "^GSPC" REAL
+);
+
+-- Clean data query
+SELECT Date, AMZN, META, "^GSPC"
+FROM raw_stock_prices
+WHERE AMZN IS NOT NULL
+  AND META IS NOT NULL
+  AND "^GSPC" IS NOT NULL
+  AND Date >= '2020-01-01'
+  AND Date <= '2025-06-24'
+ORDER BY Date;
